@@ -5,6 +5,16 @@
 </template>
 
 <style>
+body {
+  padding-top: 54px;
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -12,16 +22,8 @@
   text-align: center;
   color: #2c3e50;
 }
-#nav {
-  padding: 30px;
+.bd-grey{
+  border: 1px solid rgba(0,0,0,.125);
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>

@@ -3,26 +3,31 @@ const {
     findAll, 
     findById, 
     add, 
-    addComment,
+    // addComment,
     update,
     updateNoImage, 
-    remove} = require('../controllers/article')
+    remove,
+    findBy
+} = require('../controllers/article')
 const { multer, sendUploadToGCS } = require('../middlewares/image')
 const { isAuth } = require('../middlewares/auth')
 
 router
     .get('/', findAll)
     .get('/:id', findById)
+    .get('/:field/:value', findBy)
     .post('/', 
+        isAuth,
         multer.single('image'), 
         sendUploadToGCS, 
         add)
     // .post('/:id/addcomment', auth, addComment)
-    .put('/', 
+    .put('/',
+        isAuth,
         multer.single('image'),
         sendUploadToGCS,
         update)
-    .put('/noImage', updateNoImage)
-    .delete('/:id', remove)
+    .put('/noImage', isAuth, updateNoImage)
+    .delete('/:id', isAuth, remove)
 
 module.exports = router

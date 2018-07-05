@@ -7,7 +7,7 @@ let articleSchema = new Schema ({
   image: String,
   category: {
     type: String,
-    enum: ['others', 'food', 'design'],
+    enum: ['others', 'tutorial', 'design'],
     default: 'others'
   },
   author: {
@@ -18,6 +18,6 @@ let articleSchema = new Schema ({
   timestamps: true
 })
 
-let article = mongoose.model('article', postSchema)
+let article = mongoose.model('article', articleSchema)
 
 module.exports = article

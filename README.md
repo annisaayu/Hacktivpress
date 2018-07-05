@@ -4,7 +4,7 @@ Final Live code Phase 2
 
 # Link Hacktivpress
 Demo Blog Hacktivpress
-Access Website link : `hacktivpress.annisaayu.tech`
+Access Website link : ``
 
 ## REST API
 
@@ -44,4 +44,4 @@ Server:
 > npm start
 ```
 
-Access api via ` https://hacktivpress-server.annisaayu.tech`
+Access api via ``

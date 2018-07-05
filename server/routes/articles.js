@@ -3,7 +3,6 @@ const {
     findAll, 
     findById, 
     add, 
-    // addComment,
     update,
     updateNoImage, 
     remove,
@@ -21,13 +20,12 @@ router
         multer.single('image'), 
         sendUploadToGCS, 
         add)
-    // .post('/:id/addcomment', auth, addComment)
-    .put('/',
+    .put('/:id',
         isAuth,
         multer.single('image'),
         sendUploadToGCS,
         update)
-    .put('/noImage', isAuth, updateNoImage)
+    .put('/:id/noImage', isAuth, updateNoImage)
     .delete('/:id', isAuth, remove)
 
 module.exports = router

@@ -115,28 +115,26 @@ module.exports = {
   },
 
   update: (req, res) => {
-    const {id, title, content, category} = req.body
-    Article
-      .findById(id)
-      .then( article => {
+    let id = req.user.id
+    const {title, content, category} = req.body
+    
+    Article.findByIdAndUpdate({
+      _id: id
+    }, {
+      title, content, category, image: req.imageURL
+    })
+    .then(response => {
+      res.status(200).json({
+        message: 'Update Article success',
+        data: response
       })
-    // Article.findByIdAndUpdate({
-    //   _id: id
-    // }, {
-    //   title, content, category, image: req.imageURL
-    // })
-    // .then(response => {
-    //   res.status(200).json({
-    //     message: 'Update Article success',
-    //     data: response
-    //   })
-    // })
-    // .catch(err => {
-    //   res.status(400).json({
-    //     message: 'Update Article failed',
-    //     err: err.message
-    //   })
-    // })
+    })
+    .catch(err => {
+      res.status(400).json({
+        message: 'Update Article failed',
+        err: err.message
+      })
+    })
   },
 
   updateNoImage: (req, res) => {
@@ -169,7 +167,7 @@ module.exports = {
     .then(response => {
       res.status(200).json({
         message: 'Delete Article success',
-        data: response
+        article: response
       })
     })
     .catch(err => {

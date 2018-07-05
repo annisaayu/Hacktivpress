@@ -18,13 +18,14 @@ List of user routes:
 
 List of article routes:
 
-| Route          | HTTP    | Description                          |
-| :------------- | :------ | :----------------------------------- |
-| /articles      | GET     | Get all articles                     |
-| /articles/:id  | GET     | Get single article                   |
-| /articles      | POST    | Create a article                     |
-| /articles/:id  | DELETE  | Delete a article                     |
-| /articles/:id  | PUT     | Update a article with new info       |
+| Route                    | HTTP    | Description                          |
+| :-------------           | :------ | :----------------------------------- |
+| /articles                | GET     | Get all articles                     |
+| /articles/:id            | GET     | Get single article                   |
+| /articles/:field/:value  | GET     | Get article by category/author       |
+| /articles                | POST    | Create a article                     |
+| /articles/:id            | DELETE  | Delete a article                     |
+| /articles/:id            | PUT     | Update a article with new info       |
 
 ## Usage
 With only npm:

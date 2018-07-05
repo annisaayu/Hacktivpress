@@ -33,30 +33,6 @@ export default {
     }
   },
   methods: {
-    addComment: function(postid) {
-      let user = localStorage.getItem('token')
-      if(!user) {
-        alert('Login first')
-      } else {
-        axios.post(`http://localhost:3000/articles/${postid}/addcomment/`, {
-          id: postid,
-          comment: this.newComment
-        }, {
-          headers: {
-            token: user
-          }
-        })
-          .then(response => {
-            console.log(response)
-            this.newComment = ''
-            this.$router.go()
-          })
-          .catch(err => {
-            console.error(err)
-          })
-      }
-      
-    },
     deleteItem(id) {
       this.$store.dispatch('deleteItem', id)
     }

@@ -34,12 +34,6 @@
               {{author}}
                 <a><router-link :to="{ path: `/${author.username}`, params: { id: `${author.username}` } }">Tutorial</router-link></a>
               </li>
-              <li>
-                <a><router-link :to="{ path: '/design', params: { id: 'design' } }">Design</router-link></a>
-              </li>
-              <li>
-                <a><router-link :to="{ path: '/others', params: { id: 'others' } }">Others</router-link></a>
-              </li>
             </ul>
           </div>
         </div>

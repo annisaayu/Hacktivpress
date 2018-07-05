@@ -56,6 +56,9 @@ export default {
           })
       }
       
+    },
+    deleteItem(id) {
+      this.$store.dispatch('deleteItem', id)
     }
   },
   computed: {

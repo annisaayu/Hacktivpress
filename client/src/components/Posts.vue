@@ -46,6 +46,11 @@ export default {
     $route: function (to, from){
       this.$router.go()
     }
+  },
+  methods: {
+    deleteItem(id) {
+      this.$store.dispatch('deleteItem', id)
+    }
   } 
 }
 </script>

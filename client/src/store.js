@@ -40,16 +40,17 @@ export default new Vuex.Store({
         })
     },
     deleteItem({commit}, payload) {
-      axios.delete(`https://uiblog-server.annisaayu.tech/posts/${payload}`, {
+      axios.delete(`http://localhost:3000/articles/${payload}`, {
         headers: {
           token: localStorage.getItem('token')
         }
       })
-        .then(() => {
-          location.reload()
+        .then((response) => {
+          alert(`delete article ${response.data.article.title}`)
         })
         .catch((err) => {
           console.log('ini err', err)
+          alert('delete article failed ')
         })
     },
   }

@@ -5,6 +5,7 @@ module.exports = {
     Article
     .find()
     .populate('author')
+    .sort({ createdAt: 'desc' })
     .then(articles => {
       res.status(200).json({
         message: 'Query get all Article success',

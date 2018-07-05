@@ -13,8 +13,14 @@
       </div>
       <div class="card-footer text-muted">
         Posted on {{post.createdAt.slice(0, 10)}} by
-        <a href="#">Admin</a>
-      </div>
+        <a href="#">{{post.author.username}}</a>
+        <span v-if="username == post.author.username  && token">
+        ||
+          <a class="text-warning" data-toggle="modal" data-target=".bd-example-modal-lg" @click="changeItem(post)">Edit</a> 
+          | 
+          <a class="text-danger" @click="deleteItem(post._id)">Delete</a>
+        </span>
+      </div> 
     </div>
   </div>
 </template>
@@ -31,7 +37,9 @@ export default {
   },
   computed: {
     ...mapState([
-      'posts'
+      'posts',
+      'username',
+      'token'
     ]),
   },
   watch:{

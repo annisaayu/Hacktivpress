@@ -65,6 +65,9 @@ export default {
   },
   mounted () {
     this.getPosts()
+  },
+  created () {
+    this.getPosts()
   }
 }
 </script>

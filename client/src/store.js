@@ -6,7 +6,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    user: '',
+    username: localStorage.getItem('username'),
+    token: localStorage.getItem('token'),
     posts: [],
     authors: []
   },
@@ -37,6 +38,19 @@ export default new Vuex.Store({
         .catch(err => {
           console.error(err);
         })
-    }
+    },
+    deleteItem({commit}, payload) {
+      axios.delete(`https://uiblog-server.annisaayu.tech/posts/${payload}`, {
+        headers: {
+          token: localStorage.getItem('token')
+        }
+      })
+        .then(() => {
+          location.reload()
+        })
+        .catch((err) => {
+          console.log('ini err', err)
+        })
+    },
   }
 })

@@ -20,13 +20,13 @@ module.exports = {
       })
   },
 
-  signUp: function (req, res) {
+  register: function (req, res) {
     let hash = bcrypt.hashSync(req.body.password, 10);
 
     let newUser = new User({
+      username: req.body.username,
       email: req.body.email,
       password: hash,
-      role: req.body.role || 'customer'
     })
 
     newUser
@@ -44,10 +44,10 @@ module.exports = {
       })
   },
 
-  signIn: function (req, res) {
+  login: function (req, res) {
     User
       .findOne({
-        email: req.body.email
+        username: req.body.username
       })
       .exec()
       .then(function(user){
@@ -56,7 +56,11 @@ module.exports = {
           let isUser =  bcrypt.compareSync(req.body.password, user.password)
 
           if(isUser) {
-            let token = jwt.sign({role: user.role, id: user._id}, process.env.SECRETKEY)
+            let token = jwt.sign({
+              id: user._id,
+              username: user.username,
+              email: user.email
+            }, process.env.SECRETKEY)
             console.log(token);
             
             res.status(200).json({

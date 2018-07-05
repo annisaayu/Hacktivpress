@@ -4,7 +4,7 @@ module.exports = {
   isAuth ( req, res, next ) {
     try {
       let token = req.headers.token
-      let decoded = jwt.verify(token, process.env.SECRET)
+      let decoded = jwt.verify(token, process.env.SECRETKEY)
       req.user = decoded
 
       next()
